@@ -21,6 +21,7 @@ export default function App() {
         ></TextInput>
         <TextInput
           placeholder="Senha"
+          secureTextEntry={true}
           style={styles.input}
           onChangeText={() => {}}
         ></TextInput>
