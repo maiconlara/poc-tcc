@@ -20,7 +20,7 @@ export default function Layout() {
     return null;
   }
   return (
-    <View style={{ position: "relative", flex: 1, backgroundColor: "#f7f7f7" }}>
+    <View style={{ position: "relative", flex: 1 }}>
       <StatusBar style="dark" translucent />
 
       <Stack

@@ -1,27 +1,39 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useRouter } from "expo-router";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import logo from "../src/assets/logo.png";
 
 import { styles } from "./styles";
 
 export default function App() {
   const router = useRouter();
-  const { bottom, top } = useSafeAreaInsets();
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>POC TCC</Text>
+        <Image source={logo} style={{ height: 231, width: 270 }} />
       </View>
-      <TouchableOpacity
-        activeOpacity={0.6}
-        style={styles.button}
-        onPress={() => {
-          router.push("/");
-        }}
-      >
-        <Text style={styles.buttonText}>Entrar</Text>
-      </TouchableOpacity>
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Matrícula"
+          keyboardType="number-pad"
+          style={styles.input}
+          onChangeText={() => {}}
+        ></TextInput>
+        <TextInput
+          placeholder="Senha"
+          style={styles.input}
+          onChangeText={() => {}}
+        ></TextInput>
+        <TouchableOpacity
+          activeOpacity={0.6}
+          style={styles.button}
+          onPress={() => {
+            router.push("/");
+          }}
+        >
+          <Text style={styles.buttonText}>Entrar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

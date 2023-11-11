@@ -4,11 +4,12 @@ import { fonts } from "../src/fonts";
 
 export const styles = StyleSheet.create({
   button: {
-    marginTop: 48,
+    marginTop: 16,
     alignItems: "center",
-    minWidth: "auto",
-    borderRadius: 9999,
-    backgroundColor: colors.blue[100],
+    minWidth: 150,
+    width: "100%",
+    borderRadius: 24,
+    backgroundColor: colors.green[400],
     paddingHorizontal: 10,
     paddingVertical: 5,
   },
@@ -20,14 +21,13 @@ export const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: colors.default.bg,
+    gap: 16,
     flex: 1,
     alignItems: "center",
-    justifyContent: "space-around",
-    paddingHorizontal: 24,
+    justifyContent: "space-evenly",
     paddingVertical: 48,
   },
   titleContainer: {
-    gap: 24,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -37,5 +37,25 @@ export const styles = StyleSheet.create({
     color: colors.blue[400],
     textTransform: "uppercase",
     fontSize: 48,
+  },
+  input: {
+    backgroundColor: colors.default.bg,
+    paddingLeft: 12,
+    borderWidth: 1,
+    borderColor: colors.green[400],
+    height: 40,
+    width: "100%",
+    minWidth: 165,
+    borderRadius: 16,
+    fontFamily: fonts.roboto,
+  },
+  inputContainer: {
+    flexDirection: "column",
+    gap: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    paddingHorizontal: 56,
+
   },
 });
