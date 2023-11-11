@@ -21,7 +21,6 @@ export const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: colors.default.bg,
-    gap: 16,
     flex: 1,
     alignItems: "center",
     justifyContent: "space-evenly",
@@ -53,9 +52,9 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 8,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     width: "100%",
+    height: 200,
     paddingHorizontal: 56,
-
   },
 });
