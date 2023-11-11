@@ -36,6 +36,12 @@ export default function Layout() {
             headerShown: false,
           }}
         />
+        <Stack.Screen
+          name="pages/harvesterSelect"
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack>
     </View>
   );
