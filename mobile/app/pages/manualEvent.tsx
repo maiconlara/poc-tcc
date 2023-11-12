@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Alert, BackHandler, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { styles } from "../styles";
 import Header from "../../src/components/header";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import Farm from "../../src/assets/farm.svg";
 import Timer from "../../src/components/timer";
 import { colors } from "../../src/colors";
 import { useBackHandler } from "@react-native-community/hooks";
+import { ManualEvents } from "../../src/interface/manualEvent";
+import { handleManualEvent } from "../../src/utils/handleManualEvent";
 
 interface ManualEvent {
   id: number;
@@ -17,7 +18,31 @@ interface ManualEvent {
 
 const ManualEvent = () => {
   const [selectedHarvester, setSelectedHarvester] = useState("");
+  const [resetTimer, setResetTimer] = useState(false);
+  const [start_time, setStart_time] = useState(new Date());
+  const [event, setEvent] = useState<ManualEvent>();
+
   const { top } = useSafeAreaInsets();
+
+  const handleEvent = (eventName: ManualEvent) => {
+    if (event) {
+      const finished_at = new Date();
+      const duration = finished_at.getTime() - start_time.getTime();
+      const oldEvent: ManualEvents = {
+        name: event.name,
+        order_service: Math.floor(Math.random() * 1000),
+        operator_id: 1,
+        harvester_id: 1,
+        started_at: start_time.toISOString(),
+        finished_at: finished_at.toISOString(),
+        duration,
+      };
+      handleManualEvent(oldEvent);
+    }
+    setStart_time(new Date());
+    setResetTimer(true);
+    setEvent(eventName);
+  };
 
   useBackHandler(() => {
     return true;
@@ -27,7 +52,7 @@ const ManualEvent = () => {
     const getSelectedHarvester = async () => {
       try {
         const response = await AsyncStorage.getItem("selectedHarvester");
-        setSelectedHarvester(response || "Colhedora não selecionada");
+        setSelectedHarvester(response || "não selecionada");
       } catch (e) {}
     };
 
@@ -82,6 +107,7 @@ const ManualEvent = () => {
       <View style={styles.eventButtonContainer}>
         {manualEvents.map((event) => (
           <TouchableOpacity
+            onPress={() => handleEvent(event)}
             key={event.id}
             style={[
               styles.eventButton,
@@ -96,8 +122,11 @@ const ManualEvent = () => {
       </View>
 
       <View style={styles.timerContainer}>
-        <Text style={styles.eventDescription}>Operação</Text>
-        <Timer />
+        <Text style={styles.eventDescription}>{event?.name}</Text>
+        <Timer
+          setShouldResetTimer={setResetTimer}
+          shouldResetTimer={resetTimer}
+        />
       </View>
     </View>
   );
