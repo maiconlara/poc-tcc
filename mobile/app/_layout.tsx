@@ -7,6 +7,7 @@ import { BaiJamjuree_700Bold } from "@expo-google-fonts/bai-jamjuree";
 import { Stack } from "expo-router";
 import { View } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 export default function Layout() {
   const [isLoadedFonts] = useFonts({
@@ -20,29 +21,51 @@ export default function Layout() {
     return null;
   }
   return (
-    <View style={{ position: "relative", flex: 1 }}>
-      <StatusBar style="dark" translucent />
+    <RootSiblingParent>
+      <View style={{ position: "relative", flex: 1 }}>
+        <StatusBar style="dark" backgroundColor="#fff" translucent />
 
-      <Stack
-        screenOptions={{
-          contentStyle: {
-            backgroundColor: "transparent",
-          },
-        }}
-      >
-        <Stack.Screen
-          name="index"
-          options={{
-            headerShown: false,
+        <Stack
+          screenOptions={{
+            contentStyle: {
+              backgroundColor: "#fff",
+            },
           }}
-        />
-        <Stack.Screen
-          name="pages/harvesterSelect"
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack>
-    </View>
+        >
+          <Stack.Screen
+            name="index"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="pages/harvesterSelect"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="pages/harvesterHourMeter"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="pages/automaticEvent"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="pages/manualEvent"
+            options={{
+              headerShown: false,
+
+            }}
+          />
+        </Stack>
+        
+      </View>
+    </RootSiblingParent>
   );
 }
