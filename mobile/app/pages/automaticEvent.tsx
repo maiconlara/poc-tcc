@@ -11,6 +11,11 @@ import Timer from "../../src/components/timer";
 const AutomaticEvent = () => {
   const [selectedHarvester, setSelectedHarvester] = useState("");
   const { top } = useSafeAreaInsets();
+  const [resetTimer, setResetTimer] = useState(false);
+
+  const handleResetTimer = () => {
+    setResetTimer(true);
+  };
 
   // useBackHandler(() => {
   //   Alert.alert("Hold on!", "Are you sure you want to go back?", [
@@ -24,16 +29,14 @@ const AutomaticEvent = () => {
   //   return true;
   // });
   useBackHandler(() => {
-    
     return true;
   });
-
 
   useEffect(() => {
     const getSelectedHarvester = async () => {
       try {
         const response = await AsyncStorage.getItem("selectedHarvester");
-        setSelectedHarvester(response || "Colhedora não selecionada");
+        setSelectedHarvester(response || "não selecionada");
       } catch (e) {}
     };
 
@@ -50,7 +53,10 @@ const AutomaticEvent = () => {
       <Farm width={250} height={166} />
       <View style={styles.timerContainer}>
         <Text style={styles.eventDescription}>Operação</Text>
-        <Timer />
+        <Timer
+          setShouldResetTimer={setResetTimer}
+          shouldResetTimer={resetTimer}
+        />
       </View>
     </View>
   );
