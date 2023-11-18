@@ -51,13 +51,7 @@ export default function Layout() {
             }}
           />
           <Stack.Screen
-            name="pages/automaticEvent"
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="pages/manualEvent"
+            name="pages/event"
             options={{
               headerShown: false,
 
