@@ -1,4 +1,4 @@
-export interface ManualEvents {
+export interface ApiEvents {
   id?: number;
   name: string;
   order_service: number;

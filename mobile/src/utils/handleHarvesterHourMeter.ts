@@ -27,6 +27,6 @@ export const handleHarvesterHourMeter = (hourMeter: number) => {
       Toast.hide(toast);
     }, 2500);
   } else {
-    router.push("pages/manualEvent");
+    router.push("pages/event");
   }
 };
