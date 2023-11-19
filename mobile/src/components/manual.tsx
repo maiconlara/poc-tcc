@@ -5,70 +5,54 @@ import { styles } from "./styles";
 import Timer from "../../src/components/timer";
 import { colors } from "../../src/colors";
 import Header from "./header";
+import { Event } from "../interface/Event";
+import { useRouter } from "expo-router";
 
-interface ManualEventProps {
-  event: ManualEvent | undefined;
+export interface EventProps {
+  automaticEvent: boolean;
+  setAutomaticEvent: React.Dispatch<React.SetStateAction<boolean>>;
+  event: Event | undefined;
   selectedHarvester: string;
-  handleEvent: (event: ManualEvent) => void;
+  handleEvent: (event: Event) => void;
   resetTimer: boolean;
   setResetTimer: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface ManualEvent {
-  id: number;
-  name: string;
-  color: keyof typeof colors.green;
-}
-
-const manualEvents: ManualEvent[] = [
+export const manualEvents: Event[] = [
   {
     id: 1,
     name: "Abastecimento",
-    color: 400,
   },
   {
     id: 2,
-    name: "Transbordo",
-    color: 400,
+    name: "Aguardando",
   },
   {
     id: 3,
     name: "Troca de Turno",
-    color: 400,
   },
   {
     id: 4,
     name: "Manutenção",
-    color: 400,
   },
   {
     id: 5,
     name: "Clima",
-    color: 400,
-  },
-  {
-    id: 6,
-    name: "Finalizar OS",
-    color: 700,
   },
 ];
 
-const handleColor = (color: keyof typeof colors.green) => {
-  const handledColor = colors.green[color];
-  return handledColor;
-};
-
 const Manual = ({
   event,
+  automaticEvent,
+  setAutomaticEvent,
   selectedHarvester,
   handleEvent,
   resetTimer,
   setResetTimer,
-}: ManualEventProps) => {
+}: EventProps) => {
   const { top } = useSafeAreaInsets();
-
+  const router = useRouter();
   return (
-    
     <View style={[styles.eventContainer, { paddingTop: top + 80 }]}>
       <Header />
 
@@ -84,17 +68,34 @@ const Manual = ({
             style={[
               styles.eventButton,
               {
-                backgroundColor: handleColor(event.color),
+                backgroundColor: colors.green[400],
               },
             ]}
           >
             <Text style={styles.buttonText}>{event.name}</Text>
           </TouchableOpacity>
         ))}
+        <TouchableOpacity
+          onPress={() => {
+            handleEvent({
+              id: 6,
+              name: "Finalizar OS",
+            });
+            router.push("/");
+          }}
+          style={[
+            styles.eventButton,
+            {
+              backgroundColor: colors.green[700],
+            },
+          ]}
+        >
+          <Text style={styles.buttonText}>Finalizar OS</Text>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.eventTimerContainer}>
-        <Text style={styles.eventDescription}>{event?.name}</Text>
+        <Text style={styles.eventDescription}>{event?.name || "Ocioso"}</Text>
         <Timer
           setShouldResetTimer={setResetTimer}
           shouldResetTimer={resetTimer}

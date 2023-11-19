@@ -1,24 +1,37 @@
-import React from "react";
+import React  from "react";
 import { Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { styles } from "./styles";
 import Header from "../../src/components/header";
 import Farm from "../../src/assets/farm.svg";
 import Timer from "../../src/components/timer";
+import { Event } from "../interface/Event";
+import { EventProps } from "./manual";
 
-interface AutomaticEventProps {
-  //   event: AutomaticEvent | undefined;
-  selectedHarvester: string;
-  //   handleEvent: (event: ManualEvent) => void;
-  resetTimer: boolean;
-  setResetTimer: React.Dispatch<React.SetStateAction<boolean>>;
-}
+export const automaticEvents: Event[] = [
+  {
+    id: 1,
+    name: "Operação",
+  },
+  {
+    id: 2,
+    name: "Transbordo",
+  },
+  {
+    id: 3,
+    name: "Deslocamento",
+  },
+];
 
 const Automatic = ({
+  event,
+  automaticEvent,
+  setAutomaticEvent,
   selectedHarvester,
-  setResetTimer,
+  handleEvent,
   resetTimer,
-}: AutomaticEventProps) => {
+  setResetTimer,
+}: EventProps) => {
   const { top } = useSafeAreaInsets();
 
   return (
@@ -30,7 +43,7 @@ const Automatic = ({
       </View>
       <Farm width={250} height={166} />
       <View style={styles.eventTimerContainer}>
-        <Text style={styles.eventDescription}>Operação</Text>
+        <Text style={styles.eventDescription}>{event?.name || "Ocioso"}</Text>
         <Timer
           setShouldResetTimer={setResetTimer}
           shouldResetTimer={resetTimer}
