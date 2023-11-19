@@ -54,8 +54,7 @@ export default function App() {
           activeOpacity={0.6}
           style={styles.button}
           onPress={() => {
-            router.push("pages/event");
-            // router.push("pages/harvesterSelect");
+            router.push("pages/harvesterSelect");
           }}
         >
           <Text style={styles.buttonText}>Entrar</Text>
