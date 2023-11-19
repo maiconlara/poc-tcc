@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const apiURL = "http://192.168.100.2:5000"; //COLOCAR IP DA SUA MAQUINA AQUI
+
 export const api = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: apiURL,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
