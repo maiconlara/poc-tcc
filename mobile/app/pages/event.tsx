@@ -28,10 +28,10 @@ const event = () => {
       const oldEvent: ApiEvents = {
         name: eventRef.current.name,
         order_service: 1,
-        operator_id: 1,
-        harvester_id: 1,
-        started_at: startedTime ?? start_time.toISOString(),
-        finished_at: finished_at.toISOString(),
+        id_operador: 1,
+        id_maquina: 1,
+        data_inicio: startedTime ?? start_time.toISOString(),
+        data_fim: finished_at.toISOString(),
         duration: duration ? duration : 0,
       };
       console.log(oldEvent);

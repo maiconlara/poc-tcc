@@ -2,9 +2,9 @@ export interface ApiEvents {
   id?: number;
   name: string;
   order_service: number;
-  operator_id?: number;
-  harvester_id?: number;
-  started_at: string;
-  finished_at: string;
+  id_operador?: number;
+  id_maquina?: number;
+  data_inicio: string;
+  data_fim: string;
   duration: number;
 }
