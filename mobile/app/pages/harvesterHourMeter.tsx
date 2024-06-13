@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 
-import logo from "../../src/assets/logo.png";
+import logo from "../../src/assets/logo-column.png";
 
 import { handleHarvesterHourMeter } from "../../src/utils/handleHarvesterHourMeter";
 
@@ -26,7 +26,7 @@ const harvesterHourMeter = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Image source={logo} style={{ height: 231, width: 270 }} />
+        <Image source={logo}style={{ height: 98, width: 270 }} />
         <Text style={styles.title}>Colhedora - {selectedHarvester}</Text>
       </View>
       <View style={styles.inputContainer}>

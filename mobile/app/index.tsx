@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import { useRouter } from "expo-router";
-import logo from "../src/assets/logo.png";
+import logo from "../src/assets/logo-column.png";
 
 import { styles } from "./styles";
 import { useBackHandler } from "@react-native-community/hooks";
@@ -35,7 +35,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Image source={logo} style={{ height: 231, width: 270 }} />
+        <Image source={logo} style={{ height: 98, width: 270 }} />
       </View>
       <View style={styles.inputContainer}>
         <TextInput

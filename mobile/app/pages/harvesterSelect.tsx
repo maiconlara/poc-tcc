@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useRouter } from "expo-router";
 
-import logo from "../../src/assets/logo.png";
+import logo from "../../src/assets/logo-column.png";
 
 import { handleHarvester } from "../../src/utils/handleHarvester";
 
@@ -14,7 +14,7 @@ const harvesterSelect = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Image source={logo} style={{ height: 231, width: 270 }} />
+        <Image source={logo} style={{ height: 98, width: 270 }}  />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
