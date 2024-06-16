@@ -37,6 +37,14 @@ export const styles = StyleSheet.create({
     textTransform: "uppercase",
     fontSize: 20,
   },
+  titleBig: {
+    textAlign: "center",
+    fontFamily: fonts.baiBold,
+    color: colors.dark.bg,
+    textTransform: "uppercase",
+    fontSize: 28,
+    marginTop: 8
+  },
   input: {
     backgroundColor: colors.default.bg,
     paddingLeft: 12,

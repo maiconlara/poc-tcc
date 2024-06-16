@@ -25,7 +25,7 @@ export const manualEvents: Event[] = [
   },
   {
     id: 2,
-    name: "Aguardando",
+    name: "Aguard. Trans.",
   },
   {
     id: 3,
@@ -58,7 +58,7 @@ const Manual = ({
 
       <View style={styles.eventTitleContainer}>
         <Text style={styles.eventTitle}>Eventos Manuais</Text>
-        <Text style={styles.title}>Colhedora - {selectedHarvester}</Text>
+        <Text style={styles.title}>Ordem de Serviço - {selectedHarvester}</Text>
       </View>
       <View style={styles.eventButtonContainer}>
         {manualEvents.map((event) => (
@@ -81,7 +81,7 @@ const Manual = ({
               id: 6,
               name: "Finalizar OS",
             });
-            router.push("/");
+            router.push("pages/endTurn");
           }}
           style={[
             styles.eventButton,

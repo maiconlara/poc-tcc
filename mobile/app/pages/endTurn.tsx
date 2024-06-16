@@ -8,7 +8,7 @@ import { handleHarvesterHourMeter } from "../../src/utils/handleHarvesterHourMet
 import { styles } from "../styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const harvesterHourMeter = () => {
+const endTurn = () => {
   const [harvesterHourMeter, setHarvesterHourMeter] = useState("");
   const [selectedHarvester, setSelectedHarvester] = useState("");
 
@@ -27,7 +27,9 @@ const harvesterHourMeter = () => {
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Image source={logo}style={{ height: 98, width: 270 }} />
+        <Text style={styles.titleBig}>Finalizar Turno</Text>
         <Text style={styles.title}>Ordem de Serviço - {selectedHarvester}</Text>
+        <Text style={styles.title}>Operador - Maicon Lara</Text>
       </View>
       <View style={styles.inputContainer}>
        
@@ -47,10 +49,10 @@ const harvesterHourMeter = () => {
             handleHarvesterHourMeter(parseInt(harvesterHourMeter));
           }}
         >
-          <Text style={styles.buttonText}>Começar Turno</Text>
+          <Text style={styles.buttonText}>Finalizar Turno</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
-export default harvesterHourMeter;
+export default endTurn;

@@ -5,9 +5,11 @@ import {
 } from "@expo-google-fonts/roboto";
 import { BaiJamjuree_700Bold } from "@expo-google-fonts/bai-jamjuree";
 import { Stack } from "expo-router";
-import { View } from "react-native";
+import { View, LogBox } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { RootSiblingParent } from "react-native-root-siblings";
+
+LogBox.ignoreAllLogs();
 
 export default function Layout() {
   const [isLoadedFonts] = useFonts({
@@ -54,11 +56,15 @@ export default function Layout() {
             name="pages/event"
             options={{
               headerShown: false,
-
+            }}
+          />
+          <Stack.Screen
+            name="pages/endTurn"
+            options={{
+              headerShown: false,
             }}
           />
         </Stack>
-        
       </View>
     </RootSiblingParent>
   );

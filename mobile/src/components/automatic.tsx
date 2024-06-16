@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { styles } from "./styles";
@@ -7,6 +7,8 @@ import Farm from "../../src/assets/farm.svg";
 import Timer from "../../src/components/timer";
 import { Event } from "../interface/Event";
 import { EventProps } from "./manual";
+import Toast from "react-native-root-toast";
+import { colors } from "../colors";
 
 export const automaticEvents: Event[] = [
   {
@@ -34,12 +36,31 @@ const Automatic = ({
 }: EventProps) => {
   const { top } = useSafeAreaInsets();
 
+  const toast = Toast.show(
+    "Você está acima da velocidade descrita na ordem de serviço",
+    
+    {
+      duration: Toast.durations.LONG,
+      position: 50,
+      shadow: true,
+      animation: true,
+      hideOnPress: true,
+      delay: 0,
+      backgroundColor: colors.red[500],
+      textColor: colors.default.bg,
+      onShow: () => {},
+      onShown: () => {},
+      onHide: () => {},
+      onHidden: () => {},
+    }
+  );
+
   return (
     <View style={[styles.eventContainer, { paddingTop: top + 80 }]}>
       <Header />
       <View style={styles.eventTitleContainer}>
         <Text style={styles.eventTitle}>Eventos Automáticos</Text>
-        <Text style={styles.title}>Colhedora - {selectedHarvester}</Text>
+        <Text style={styles.title}>Ordem de Serviço - {selectedHarvester}</Text>
       </View>
       <Farm width={250} height={166} />
       <View style={styles.eventTimerContainer}>

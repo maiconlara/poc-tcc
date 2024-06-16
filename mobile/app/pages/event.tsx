@@ -35,7 +35,7 @@ const event = () => {
         duration: duration ? duration : 0,
       };
       console.log(oldEvent);
-      handleApiEvent(oldEvent);
+      // handleApiEvent(oldEvent);
     }
     setStart_time(new Date());
     startedRef.current = new Date();
